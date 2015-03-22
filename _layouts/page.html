@@ -1,0 +1,44 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{% if site.data.site.language %}{{ site.data.site.language }}{% else %}en{% endif %}">
+  {% include head.html %}
+  <body itemscope itemtype="http://schema.org/Article">
+    {% include header.html %}
+    <main class="content" role="main">
+      <article class="post">
+        {% if page.image %}
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url({% if page.image %}{{ page.image }}{% endif %})"></div>
+        {% else %}
+        <div class="noarticleimage">
+        {% endif %}
+          <div class="post-meta">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url({{ site.data.site.logo }})"></div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ site.data.site.name }}</h4>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          {{content}}
+        </section>
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image" {%if site.data.site.cover %} style="background-image: url({{ site.data.site.cover }})"{% endif %}></div>
+      <div class="inner">
+        <h1 class="blog-title">{{ site.data.site.name }}</h1>
+        <h2 class="blog-description">{{ site.data.site.description }}</h2>
+        <a href="/" class="btn"><i class="fa fa-home"></i></a>
+      </div>
+    </div>
+    {% include js.html %}
+    {% include analytics.html %}
+  </body>
+</html>

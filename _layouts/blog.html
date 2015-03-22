@@ -1,0 +1,23 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{% if site.data.site.language %}{{ site.data.site.language }}{% else %}en{% endif %}">
+  {% include head.html %}
+  <body>
+    {% include header.html %}
+    <div class="page-content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </div>
+    <footer class="site-footer">
+      <div class="inner">
+        <section class="copyright">
+        El contenido de este sitio web es &copy;{{ site.time | date: '%Y' }} {{ site.data.site.name }} bajo los términos de la licencia MIT.
+        </section>
+      </div>
+    </footer>
+    {% include js.html %}
+    {% include analytics.html %}
+  </body>
+</html>

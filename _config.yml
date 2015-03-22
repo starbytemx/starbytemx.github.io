@@ -1,0 +1,24 @@
+url: http://starbyte.mx
+exclude: [CNAME, README.md]
+permalink: /blog/:categories/:title/
+paginate: 5
+paginate_path: "/blog/:num/"
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+sass:
+    style: :compressed

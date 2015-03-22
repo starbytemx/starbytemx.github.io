@@ -1,0 +1,21 @@
+name: Star Byte MX
+email: hola@starbyte.mx
+description: Somos un conjunto de bits que te ayudarán a solucionar tus problemas.
+language: es
+googleAnalytics: UA-44593751-1
+gravatar: 2ae3e32088df2321bbc5ab1a66346c79
+social:
+  - title: inbox
+    url: mailto:hola@starbyte.mx
+  - title: twitter
+    url: https://twitter.com/starbytemx
+    share_url: http://twitter.com/share
+    share_title: ?text=
+    share_link: "&amp;url="
+  - title: facebook
+    url: https://facebook.com/starbytemx
+    share_url: https://www.facebook.com/sharer.php
+    share_title: ?t=
+    share_link: "&amp;u="
+logo: "/assets/img/sbmx_400400.png"
+cover: "/assets/img/banner-bg.jpg"

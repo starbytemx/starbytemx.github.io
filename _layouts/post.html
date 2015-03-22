@@ -1,0 +1,84 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{% if site.data.site.language %}{{ site.data.site.language }}{% else %}en{% endif %}">
+  {% include head.html %}
+  <body itemscope itemtype="http://schema.org/Article">
+    {% include header.html %}
+    <main class="content" role="main">
+      <article class="post">
+        {% if page.image %}
+        <div class="article-image">
+          <div class="post-image-image" style="background-image: url({% if page.image %}{{ page.image }}{% endif %})"></div>
+        {% else %}
+        <div class="noarticleimage">
+        {% endif %}
+          <div class="post-meta">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <div class="cf post-meta-text">
+              <div class="author-image" style="background-image: url(//secure.gravatar.com/avatar/{{ site.data.author[page.author].gravatar }})"></div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ site.data.author[page.author].name }}</h4>
+              <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+            </div>
+            <div style="text-align:center">
+              <a href="#topofpage" class="topofpage"><i class="fa fa-angle-down"></i></a>
+            </div>
+          </div>
+        </div>
+        <section class="post-content">
+          <div class="post-reading">
+            <span class="post-reading-time"></span> de lectura
+          </div>
+          <a name="topofpage"></a>
+          {{content}}
+        </section>
+        <footer class="post-footer">
+          <section class="share">
+            {% for social in site.data.site.social %}
+              {% if social.share_url != null %}
+                <a class="icon-{{ social.title }}" href="{{ social.share_url }}{{ social.share_title }}{{page.title | cgi_escape}}{{ social.share_link }}{{site.url}}{{page.id}}"
+                  onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
+                <i class="fa fa-{{ social.title }}"></i><span class="hidden">{{ social.title }}</span>
+                </a>
+              {% endif %}
+            {% endfor %}
+          </section>
+        </footer>
+        <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Escrito por</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(//secure.gravatar.com/avatar/{{ site.data.author[page.author].gravatar }})"></div>
+              <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ site.data.author[page.author].name }}</h4>
+              <p class="bio">{{site.data.author[page.author].bio}}</p>
+              <hr>
+              <p class="published">Publicado <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date: "%Y-%m-%d" }}</time></p>
+            </section>
+          </div>
+          {{/post}}
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Con apoyo</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby"><a href="{{site.url}}">{{site.data.site.name}}</a></section>
+              <div class="inner">
+                <section class="copyright">El contenido de este sitio web es &copy;{{ site.time | date: '%Y' }} {{ site.data.site.name }} bajo los términos de la licencia MIT.</section>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </article>
+    </main>
+    <div class="bottom-closer">
+      <div class="background-closer-image" {%if site.data.site.cover %} style="background-image: url({{ site.data.site.cover }})"{% endif %}>
+        Image
+      </div>
+      <div class="inner">
+        <h1 class="blog-title">{{ site.data.site.name }}</h1>
+        <h2 class="blog-description">{{ site.data.site.description }}</h2>
+        <a href="/blog/" class="btn">Blog</a>
+      </div>
+    </div>
+    {% include js.html %}
+    {% include analytics.html %}
+  </body>
+</html>

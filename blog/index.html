@@ -1,0 +1,56 @@
+---
+layout: blog
+title: Star Byte MX
+subtitle: Realizamos nuestro trabajo con pasión y vocación.
+---
+<div class="teaserimage">
+  <div class="teaserimage-image" {% if site.data.site.cover %}style="background-image: url({{ site.data.site.cover }})"{% endif %}></div>
+</div>
+<header class="blog-header">
+    {% if site.data.site.logo %}
+      <a class="blog-logo" href="/" style="background-image: url('{{ site.data.site.logo }}')">{{ site.data.site.name }}</a>
+    {% endif %}
+    <h1 class="blog-title">{{ page.title }}</h1>
+    <h2 class="blog-description">{{ page.subtitle }}</h2>
+    <div class="custom-links">
+      {% for social in site.data.site.social %}
+        {% if social.url %}
+            <a class="icon-{{ social.title }}" href="{{ social.url }}"><i class="fa fa-{{ social.title }}"></i></a>
+            &sdot;
+        {% endif %}
+      {% endfor %}
+      <a href="/">Portafolio</a>
+    </div>
+</header>
+<main class="content" role="main">
+    <div class="cf frame">
+      {% for post in paginator.posts %}
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          <div class="article-item">
+            <header class="post-header">
+              <h2 class="post-title" itemprop="name"><a href="{{ post.url }}" itemprop="url">{{ post.title }}</a></h2>
+            </header>
+            <section class="post-excerpt" itemprop="description">
+              <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
+            </section>
+            <div class="post-meta">
+              <time datetime="{{ post.date | date_to_long_string }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    <nav class="pagination" role="navigation">
+      {% if paginator.next_page %}
+        <a class="newer-posts" href="/blog/{{paginator.next_page}}">&larr; Posts anteriores</a>
+      {% endif %}
+      <span class="page-number">Página {{ paginator.page }} de {{ paginator.total_pages }}</span>
+      {% if paginator.previous_page %}
+        {% if paginator.page == 2 %}
+          <a class="older-posts" href="/blog/">Nuevos posts &rarr;</a>
+        {% else %}
+          <a class="older-posts" href="/blog/{{paginator.previous_page}}">Nuevos posts &rarr;</a>
+        {% endif %}
+      {% endif %}
+    </nav>
+</main>

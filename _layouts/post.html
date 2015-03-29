@@ -55,7 +55,6 @@
               <p class="published">Publicado <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date: "%Y-%m-%d" }}</time></p>
             </section>
           </div>
-          {{/post}}
           <div class="isRight">
             <h5 class="index-headline featured"><span>Con apoyo</span></h5>
             <footer class="site-footer">
@@ -69,9 +68,7 @@
       </article>
     </main>
     <div class="bottom-closer">
-      <div class="background-closer-image" {%if site.data.site.cover %} style="background-image: url({{ site.data.site.cover }})"{% endif %}>
-        Image
-      </div>
+      <div class="background-closer-image" {%if site.data.site.cover %} style="background-image: url({{ site.data.site.cover }})"{% endif %}></div>
       <div class="inner">
         <h1 class="blog-title">{{ site.data.site.name }}</h1>
         <h2 class="blog-description">{{ site.data.site.description }}</h2>
